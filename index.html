@@ -7,7 +7,29 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<script>
+tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+</script>
+<style>
+.glass-card{background:rgba(30,41,59,.7);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08)}
+.glass-nav{background:rgba(15,23,42,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)}
+.glow{box-shadow:0 0 25px -5px rgba(56,189,248,.3)}
+/* Effect 1: scroll par fade + slide up */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.show{opacity:1;transform:none}
+/* Effect 2: profile card hilta hai */
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.float{animation:float 4s ease-in-out infinite}
+/* Effect 3: typing cursor */
+.cursor{display:inline-block;width:3px;height:1em;background:#38bdf8;margin-left:4px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+/* Effect 4: project card hover */
+.project-card{cursor:pointer;transition:transform .3s,border-color .3s,box-shadow .3s}
+.project-card:hover{transform:translateY(-8px);border-color:rgba(56,189,248,.6);box-shadow:0 20px 40px -15px rgba(56,189,248,.35)}
+.project-card img{transition:transform .5s}
+.project-card:hover img{transform:scale(1.08)}
+.nav-link.active{color:#38bdf8}
+</style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
 
@@ -28,11 +50,11 @@
       <a href="#projects" class="nav-link hover:text-sky-400">Projects</a>
       <a href="#contact" class="nav-link hover:text-sky-400">Contact</a>
     </nav>
-    <!-- CV download: assets/cv.pdf file download hogi -->
-href="assets/cv.pdf" download="Mehak_Rehman_Siddique_CV.pdf" onclick="showToast('Downloading your CV...')"
-    class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-sm font-medium">
-    <i class="fa-solid fa-download text-xs"></i> Download CV
-</a>
+    <!-- CV download: assets/cv.pdf (GitHub par file ka naam cv.pdf hai) -->
+    <a href="assets/cv.pdf" download="Mehak_Rehman_Siddique_CV.pdf" onclick="showToast('Downloading your CV...')"
+       class="hidden md:flex px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 text-white font-medium text-sm glow items-center gap-2 active:scale-95">
+      <i class="fa-solid fa-download text-xs"></i> Download CV
+    </a>
     <button onclick="toggleMenu()" class="md:hidden p-2 text-slate-300" aria-label="Menu">
       <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
     </button>
@@ -43,7 +65,7 @@ href="assets/cv.pdf" download="Mehak_Rehman_Siddique_CV.pdf" onclick="showToast(
     <a href="#skills" onclick="toggleMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-800">Skills</a>
     <a href="#projects" onclick="toggleMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-800">Projects</a>
     <a href="#contact" onclick="toggleMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-800">Contact</a>
-    <a href="assets/CV.pdf" download="Mehak_Rehman_Siddique_CV.pdf" onclick="showToast('Downloading your CV...')"
+    <a href="assets/cv.pdf" download="Mehak_Rehman_Siddique_CV.pdf" onclick="showToast('Downloading your CV...')"
        class="block text-center px-4 py-2.5 rounded-xl bg-sky-500 text-white font-medium text-sm">
       <i class="fa-solid fa-download text-xs"></i> Download CV
     </a>
@@ -72,15 +94,18 @@ href="assets/cv.pdf" download="Mehak_Rehman_Siddique_CV.pdf" onclick="showToast(
         <a href="#contact" class="px-6 py-3.5 rounded-xl glass-card hover:bg-slate-800 font-semibold text-sm">Contact Me</a>
       </div>
       <div class="flex items-center justify-center lg:justify-start space-x-5 pt-4 text-slate-400 text-xl">
-        <a href="https://github.com/your-username" target="_blank" aria-label="GitHub" class="hover:text-sky-400"><i class="fa-brands fa-github"></i></a>
+        <a href="https://github.com/mehakrsmehakrs-blip" target="_blank" aria-label="GitHub" class="hover:text-sky-400"><i class="fa-brands fa-github"></i></a>
         <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn" class="hover:text-sky-400"><i class="fa-brands fa-linkedin"></i></a>
         <a href="mailto:student@example.com" aria-label="Email" class="hover:text-sky-400"><i class="fa-solid fa-envelope"></i></a>
       </div>
     </div>
-    <!-- Photo: assets/photo.jpg -->
+    <!-- Photo: assets/photo.jpg. Na ho to icon dikhega -->
     <div class="lg:col-span-5 flex justify-center reveal">
-      <div class="float w-64 h-64 md:w-80 md:h-80 rounded-2xl p-1 bg-gradient-to-r from-sky-400 to-indigo-500 shadow-xl overflow-hidden relative">
-        <img src="assets/photo.jpg" alt="Mehak Rehman Siddique" class="w-full h-full object-cover rounded-2xl">
+      <div class="float w-64 h-64 sm:w-80 sm:h-80 rounded-3xl p-2 bg-gradient-to-b from-sky-500 to-indigo-600 shadow-2xl">
+        <div class="relative w-full h-full bg-slate-900 rounded-[22px] overflow-hidden flex items-center justify-center">
+          <i class="fa-solid fa-user-astronaut text-7xl text-sky-400"></i>
+          <img src="assets/photo.jpg" alt="Mehak Rehman Siddique" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+        </div>
       </div>
     </div>
   </div>
@@ -195,7 +220,7 @@ href="assets/cv.pdf" download="Mehak_Rehman_Siddique_CV.pdf" onclick="showToast(
       <div class="reveal project-card glass-card rounded-2xl overflow-hidden" onclick="openProject(0)">
         <div class="relative h-48 overflow-hidden bg-gradient-to-br from-sky-600 to-indigo-700 flex items-center justify-center">
           <i class="fa-solid fa-desktop text-5xl text-white/70"></i>
-          <img src="assets/project1.png" alt="Landing page" class="absolute inset-0 w-full h-full object-cover">
+          <img src="assets/project1.PNG" alt="Landing page" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
         </div>
         <div class="p-6">
           <h3 class="text-xl font-bold text-white mb-2">Product Landing Page</h3>
@@ -207,7 +232,7 @@ href="assets/cv.pdf" download="Mehak_Rehman_Siddique_CV.pdf" onclick="showToast(
       <div class="reveal project-card glass-card rounded-2xl overflow-hidden" onclick="openProject(1)">
         <div class="relative h-48 overflow-hidden bg-gradient-to-br from-emerald-600 to-teal-700 flex items-center justify-center">
           <i class="fa-solid fa-chart-column text-5xl text-white/70"></i>
-          <img src="assets/project2.png" alt="Dashboard" class="absolute inset-0 w-full h-full object-cover">
+          <img src="assets/project2.PNG" alt="Dashboard" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
         </div>
         <div class="p-6">
           <h3 class="text-xl font-bold text-white mb-2">Data Analytics Dashboard</h3>
@@ -219,7 +244,7 @@ href="assets/cv.pdf" download="Mehak_Rehman_Siddique_CV.pdf" onclick="showToast(
       <div class="reveal project-card glass-card rounded-2xl overflow-hidden" onclick="openProject(2)">
         <div class="relative h-48 overflow-hidden bg-gradient-to-br from-indigo-600 to-purple-700 flex items-center justify-center">
           <i class="fa-solid fa-id-card text-5xl text-white/70"></i>
-          <img src="assets/project3.png" alt="Project 3" class="absolute inset-0 w-full h-full object-cover">
+          <img src="assets/project3.PNG" alt="Portfolio" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
         </div>
         <div class="p-6">
           <h3 class="text-xl font-bold text-white mb-2">Personal Portfolio Site</h3>
@@ -256,7 +281,7 @@ href="assets/cv.pdf" download="Mehak_Rehman_Siddique_CV.pdf" onclick="showToast(
         <div class="glass-card p-6 rounded-2xl">
           <h3 class="text-sm font-bold text-white mb-3">Social Media</h3>
           <div class="flex space-x-3">
-            <a href="https://github.com/your-username" target="_blank" aria-label="GitHub" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-sky-500 flex items-center justify-center hover:-translate-y-1 transition-all"><i class="fa-brands fa-github text-lg"></i></a>
+            <a href="https://github.com/mehakrsmehakrs-blip" target="_blank" aria-label="GitHub" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-sky-500 flex items-center justify-center hover:-translate-y-1 transition-all"><i class="fa-brands fa-github text-lg"></i></a>
             <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-sky-500 flex items-center justify-center hover:-translate-y-1 transition-all"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
             <a href="https://facebook.com/" target="_blank" aria-label="Facebook" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-sky-500 flex items-center justify-center hover:-translate-y-1 transition-all"><i class="fa-brands fa-facebook-f text-lg"></i></a>
           </div>
@@ -309,6 +334,131 @@ href="assets/cv.pdf" download="Mehak_Rehman_Siddique_CV.pdf" onclick="showToast(
 <!-- Toast -->
 <div id="toast" class="fixed bottom-5 right-5 glass-card text-white px-5 py-3 rounded-xl shadow-xl hidden border-l-4 border-l-sky-500 z-[80] text-sm"><span id="toast-message"></span></div>
 
-<script src="script.js"></script>
+<script>
+// Footer year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Mobile menu
+function toggleMenu() {
+  const menu = document.getElementById('mobile-menu');
+  menu.classList.toggle('hidden');
+  document.getElementById('menu-icon').className =
+    menu.classList.contains('hidden') ? 'fa-solid fa-bars text-xl' : 'fa-solid fa-xmark text-xl';
+}
+
+// Toast message
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-message').textContent = msg;
+  t.classList.remove('hidden');
+  setTimeout(() => t.classList.add('hidden'), 3000);
+}
+
+// Contact form
+function handleFormSubmit(e) {
+  e.preventDefault();
+  showToast('Message sent successfully!');
+  e.target.reset();
+}
+
+// Project data: yahan apne asli links likhein
+const projects = [
+  {
+    title: 'Product Landing Page',
+    image: 'assets/project1.PNG',
+    description: 'A responsive promotional landing page built to practise semantic HTML5 and modern CSS layouts.',
+    features: ['Responsive on mobile and desktop', 'Smooth scrolling between sections', 'Clear call-to-action buttons'],
+    tags: ['HTML5', 'CSS3', 'Responsive'],
+    live: 'https://mehakrsmehakrs-blip.github.io/landing-page/',
+    code: 'https://github.com/mehakrsmehakrs-blip/landing-page'
+  },
+  {
+    title: 'Data Analytics Dashboard',
+    image: 'assets/project2.PNG',
+    description: 'A spreadsheet dashboard that summarises numbers with charts so trends are easy to read.',
+    features: ['Pivot tables for quick summaries', 'Bar and pie charts for key metrics', 'Clean, organised data sheet'],
+    tags: ['Google Sheets', 'Data Viz', 'Pivot Tables'],
+    live: 'https://docs.google.com/spreadsheets/',
+    code: 'https://github.com/mehakrsmehakrs-blip/data-dashboard'
+  },
+  {
+    title: 'Personal Portfolio Site',
+    image: 'assets/project3.PNG',
+    description: 'This portfolio, designed in Figma first and then coded and published with GitHub Pages.',
+    features: ['Six sections from header to footer', 'Downloadable CV and project popups', 'Scroll animations and typing effect'],
+    tags: ['HTML5', 'Tailwind CSS', 'JavaScript', 'GitHub Pages'],
+    live: 'https://mehakrsmehakrs-blip.github.io/Portfolio_Mehak_Rehman_Siddique/',
+    code: 'https://github.com/mehakrsmehakrs-blip/Portfolio_Mehak_Rehman_Siddique'
+  }
+];
+
+// Popup kholna
+function openProject(i) {
+  const p = projects[i];
+  const img = document.getElementById('m-img');
+  img.style.display = '';
+  img.src = p.image;
+  document.getElementById('m-title').textContent = p.title;
+  document.getElementById('m-desc').textContent = p.description;
+  document.getElementById('m-features').innerHTML = p.features.map(f => '<li>' + f + '</li>').join('');
+  document.getElementById('m-tags').innerHTML = p.tags.map(t =>
+    '<span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md">' + t + '</span>').join('');
+  document.getElementById('m-live').href = p.live;
+  document.getElementById('m-code').href = p.code;
+  const modal = document.getElementById('modal');
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  document.body.style.overflow = 'hidden';
+}
+
+// Popup band karna
+function closeProject() {
+  const modal = document.getElementById('modal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProject(); });
+
+// Typing effect
+const roles = ['Web Developer', 'Data Analytics Student', 'Future Full-Stack Developer'];
+let r = 0, c = 0, deleting = false;
+function type() {
+  const word = roles[r];
+  c += deleting ? -1 : 1;
+  document.getElementById('typed').textContent = word.slice(0, c);
+  let delay = deleting ? 50 : 110;
+  if (!deleting && c === word.length) { deleting = true; delay = 1400; }
+  else if (deleting && c === 0) { deleting = false; r = (r + 1) % roles.length; delay = 400; }
+  setTimeout(type, delay);
+}
+type();
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add('show'); revealObserver.unobserve(en.target); }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Menu mein current section highlight
+const navLinks = document.querySelectorAll('.nav-link');
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + en.target.id));
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+
+// Scroll progress bar
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  document.getElementById('progress').style.width =
+    (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100 + '%';
+});
+</script>
 </body>
 </html>
