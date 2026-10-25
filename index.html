@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mehak Rehman Siddique | Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+<!-- Scroll progress bar -->
+<div id="progress" class="fixed top-0 left-0 h-1 w-0 bg-gradient-to-r from-sky-400 to-indigo-500 z-[70]"></div>
+
+<!-- 1. NAVBAR -->
+<header class="fixed top-0 left-0 w-full z-50 glass-nav">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <a href="#home" class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xl">M</div>
+      <span class="text-xl font-bold text-white">Mehak<span class="text-sky-400">.</span></span>
+    </a>
+    <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+      <a href="#home" class="nav-link hover:text-sky-400">Home</a>
+      <a href="#about" class="nav-link hover:text-sky-400">About</a>
+      <a href="#skills" class="nav-link hover:text-sky-400">Skills</a>
+      <a href="#projects" class="nav-link hover:text-sky-400">Projects</a>
+      <a href="#contact" class="nav-link hover:text-sky-400">Contact</a>
+    </nav>
+    <!-- CV download: assets/CV.pdf file download hogi -->
+    <a href="assets/CV.pdf" download="Mehak_Rehman_Siddique_CV.pdf" onclick="showToast('Downloading your CV...')"
+       class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-sm font-medium">
+      <i class="fa-solid fa-download text-xs"></i> Download CV
+    </a>
+    <button onclick="toggleMenu()" class="md:hidden p-2 text-slate-300" aria-label="Menu">
+      <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden glass-card px-4 pt-2 pb-6 space-y-2">
+    <a href="#home" onclick="toggleMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-800">Home</a>
+    <a href="#about" onclick="toggleMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-800">About</a>
+    <a href="#skills" onclick="toggleMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-800">Skills</a>
+    <a href="#projects" onclick="toggleMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-800">Projects</a>
+    <a href="#contact" onclick="toggleMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-800">Contact</a>
+    <a href="assets/CV.pdf" download="Mehak_Rehman_Siddique_CV.pdf" onclick="showToast('Downloading your CV...')"
+       class="block text-center px-4 py-2.5 rounded-xl bg-sky-500 text-white font-medium text-sm">
+      <i class="fa-solid fa-download text-xs"></i> Download CV
+    </a>
+  </div>
+</header>
+
+<main class="flex-grow pt-20">
+
+<!-- 2. HERO -->
+<section id="home" class="min-h-[calc(100vh-5rem)] flex items-center relative overflow-hidden py-16">
+  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-7 space-y-6 text-center lg:text-left reveal">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-card text-sky-400 text-xs font-semibold uppercase">
+        <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span> Welcome to my portfolio
+      </div>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+        Hi, I'm <span class="bg-gradient-to-r from-sky-400 via-indigo-300 to-sky-200 bg-clip-text text-transparent">Mehak Rehman Siddique</span>
+      </h1>
+      <p class="text-xl sm:text-2xl font-semibold text-slate-200 min-h-[2rem]"><span id="typed"></span><span class="cursor"></span></p>
+      <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0">
+        I build clean web pages and find useful insights in data. Enrolled in the D4WEE Training Program at GCWUF.
+      </p>
+      <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+        <a href="#projects" class="px-6 py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-semibold text-sm glow">View Projects <i class="fa-solid fa-arrow-right text-xs"></i></a>
+        <a href="#contact" class="px-6 py-3.5 rounded-xl glass-card hover:bg-slate-800 font-semibold text-sm">Contact Me</a>
+      </div>
+      <div class="flex items-center justify-center lg:justify-start space-x-5 pt-4 text-slate-400 text-xl">
+        <a href="https://github.com/your-username" target="_blank" aria-label="GitHub" class="hover:text-sky-400"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn" class="hover:text-sky-400"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:student@example.com" aria-label="Email" class="hover:text-sky-400"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+    <!-- Photo: assets/photo.jpg -->
+    <div class="lg:col-span-5 flex justify-center reveal">
+      <div class="float w-64 h-64 md:w-80 md:h-80 rounded-2xl p-1 bg-gradient-to-r from-sky-400 to-indigo-500 shadow-xl overflow-hidden relative">
+        <img src="assets/photo.jpg" alt="Mehak Rehman Siddique" class="w-full h-full object-cover rounded-2xl">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. ABOUT -->
+<section id="about" class="py-20 bg-slate-900/50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-xs font-semibold uppercase tracking-wider text-sky-400 mb-2">Background</h2>
+      <p class="text-3xl sm:text-4xl font-bold text-white">About Me</p>
+      <div class="w-12 h-1 bg-sky-500 mx-auto rounded-full mt-4"></div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <div class="space-y-5 text-slate-300 leading-relaxed reveal">
+        <p class="text-lg text-slate-200 font-medium">I am a student at <span class="text-sky-400 font-semibold">Government College Women University Faisalabad (GCWUF)</span>, taking part in the D4WEE Training Program (a project with UN Women &amp; Karvan).</p>
+        <p>My studies are combined with hands-on technology training. I build responsive web pages and use data analytics to support better decisions.</p>
+        <p>I want to keep growing as a developer and data analyst and build applications that are accessible, interactive and data-informed.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="reveal glass-card p-6 rounded-2xl border-l-4 border-l-sky-500 hover:-translate-y-1 transition-transform">
+          <i class="fa-solid fa-graduation-cap text-sky-400 text-2xl mb-3"></i>
+          <h3 class="text-white font-bold mb-1">GCWUF Student</h3>
+          <p class="text-slate-400 text-sm">Studies with specialised IT training.</p>
+        </div>
+        <div class="reveal glass-card p-6 rounded-2xl border-l-4 border-l-indigo-500 hover:-translate-y-1 transition-transform">
+          <i class="fa-solid fa-laptop-code text-indigo-400 text-2xl mb-3"></i>
+          <h3 class="text-white font-bold mb-1">D4WEE Track</h3>
+          <p class="text-slate-400 text-sm">Web Development &amp; Data Analytics (Tier 2).</p>
+        </div>
+        <div class="reveal glass-card p-6 rounded-2xl border-l-4 border-l-teal-500 hover:-translate-y-1 transition-transform">
+          <i class="fa-solid fa-chart-line text-teal-400 text-2xl mb-3"></i>
+          <h3 class="text-white font-bold mb-1">Data-Driven</h3>
+          <p class="text-slate-400 text-sm">Raw data into clear dashboards.</p>
+        </div>
+        <div class="reveal glass-card p-6 rounded-2xl border-l-4 border-l-purple-500 hover:-translate-y-1 transition-transform">
+          <i class="fa-solid fa-mobile-screen-button text-purple-400 text-2xl mb-3"></i>
+          <h3 class="text-white font-bold mb-1">Responsive Design</h3>
+          <p class="text-slate-400 text-sm">Works well on every device.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. SKILLS -->
+<section id="skills" class="py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-xs font-semibold uppercase tracking-wider text-sky-400 mb-2">Technical Toolkit</h2>
+      <p class="text-3xl sm:text-4xl font-bold text-white">Skills &amp; Capabilities</p>
+      <div class="w-12 h-1 bg-sky-500 mx-auto rounded-full mt-4"></div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="reveal glass-card p-6 rounded-2xl hover:border-sky-500/50 hover:-translate-y-1 transition-all group">
+        <div class="flex items-center space-x-4 mb-3">
+          <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:rotate-6 transition-transform"><i class="fa-brands fa-html5"></i></div>
+          <div><h3 class="text-lg font-bold text-white">HTML5</h3><span class="text-xs text-slate-400">Semantic Markup</span></div>
+        </div>
+        <p class="text-slate-300 text-sm">Clean, accessible page structure.</p>
+      </div>
+      <div class="reveal glass-card p-6 rounded-2xl hover:border-sky-500/50 hover:-translate-y-1 transition-all group">
+        <div class="flex items-center space-x-4 mb-3">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:rotate-6 transition-transform"><i class="fa-brands fa-css3-alt"></i></div>
+          <div><h3 class="text-lg font-bold text-white">CSS3 &amp; Tailwind</h3><span class="text-xs text-slate-400">Styling &amp; Layouts</span></div>
+        </div>
+        <p class="text-slate-300 text-sm">Responsive design with Flexbox and Grid.</p>
+      </div>
+      <div class="reveal glass-card p-6 rounded-2xl hover:border-sky-500/50 hover:-translate-y-1 transition-all group">
+        <div class="flex items-center space-x-4 mb-3">
+          <div class="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:rotate-6 transition-transform"><i class="fa-brands fa-js"></i></div>
+          <div><h3 class="text-lg font-bold text-white">JavaScript</h3><span class="text-xs text-slate-400">Client-Side Logic</span></div>
+        </div>
+        <p class="text-slate-300 text-sm">Events, DOM and interactive features.</p>
+      </div>
+      <div class="reveal glass-card p-6 rounded-2xl hover:border-sky-500/50 hover:-translate-y-1 transition-all group">
+        <div class="flex items-center space-x-4 mb-3">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:rotate-6 transition-transform"><i class="fa-brands fa-git-alt"></i></div>
+          <div><h3 class="text-lg font-bold text-white">Git &amp; GitHub</h3><span class="text-xs text-slate-400">Version Control</span></div>
+        </div>
+        <p class="text-slate-300 text-sm">Commits, repositories and GitHub Pages.</p>
+      </div>
+      <div class="reveal glass-card p-6 rounded-2xl hover:border-sky-500/50 hover:-translate-y-1 transition-all group">
+        <div class="flex items-center space-x-4 mb-3">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:rotate-6 transition-transform"><i class="fa-solid fa-chart-pie"></i></div>
+          <div><h3 class="text-lg font-bold text-white">Data Analytics Basics</h3><span class="text-xs text-slate-400">Data Insights</span></div>
+        </div>
+        <p class="text-slate-300 text-sm">Data cleaning and visual storytelling.</p>
+      </div>
+      <div class="reveal glass-card p-6 rounded-2xl hover:border-sky-500/50 hover:-translate-y-1 transition-all group">
+        <div class="flex items-center space-x-4 mb-3">
+          <div class="w-12 h-12 rounded-xl bg-green-500/10 text-green-400 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:rotate-6 transition-transform"><i class="fa-solid fa-table"></i></div>
+          <div><h3 class="text-lg font-bold text-white">Google Sheets</h3><span class="text-xs text-slate-400">Spreadsheet Analysis</span></div>
+        </div>
+        <p class="text-slate-300 text-sm">Formulas, pivot tables and charts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. PROJECTS (card par click karein to popup khulta hai) -->
+<section id="projects" class="py-20 bg-slate-900/50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-xs font-semibold uppercase tracking-wider text-sky-400 mb-2">Portfolio Showcase</h2>
+      <p class="text-3xl sm:text-4xl font-bold text-white">Featured Projects</p>
+      <p class="text-slate-400 text-sm mt-3">Click any project to see its details</p>
+      <div class="w-12 h-1 bg-sky-500 mx-auto rounded-full mt-4"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <div class="reveal project-card glass-card rounded-2xl overflow-hidden" onclick="openProject(0)">
+        <div class="relative h-48 overflow-hidden bg-gradient-to-br from-sky-600 to-indigo-700 flex items-center justify-center">
+          <i class="fa-solid fa-desktop text-5xl text-white/70"></i>
+          <img src="assets/project1.png" alt="Landing page" class="absolute inset-0 w-full h-full object-cover">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-white mb-2">Product Landing Page</h3>
+          <p class="text-slate-300 text-sm mb-4">A responsive promotional landing page.</p>
+          <span class="text-sky-400 text-sm font-semibold">View details <i class="fa-solid fa-arrow-right text-xs"></i></span>
+        </div>
+      </div>
+
+      <div class="reveal project-card glass-card rounded-2xl overflow-hidden" onclick="openProject(1)">
+        <div class="relative h-48 overflow-hidden bg-gradient-to-br from-emerald-600 to-teal-700 flex items-center justify-center">
+          <i class="fa-solid fa-chart-column text-5xl text-white/70"></i>
+          <img src="assets/project2.png" alt="Dashboard" class="absolute inset-0 w-full h-full object-cover">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-white mb-2">Data Analytics Dashboard</h3>
+          <p class="text-slate-300 text-sm mb-4">A spreadsheet dashboard with metrics and charts.</p>
+          <span class="text-sky-400 text-sm font-semibold">View details <i class="fa-solid fa-arrow-right text-xs"></i></span>
+        </div>
+      </div>
+
+      <div class="reveal project-card glass-card rounded-2xl overflow-hidden" onclick="openProject(2)">
+        <div class="relative h-48 overflow-hidden bg-gradient-to-br from-indigo-600 to-purple-700 flex items-center justify-center">
+          <i class="fa-solid fa-id-card text-5xl text-white/70"></i>
+          <img src="assets/project3.png" alt="Project 3" class="absolute inset-0 w-full h-full object-cover">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-white mb-2">Personal Portfolio Site</h3>
+          <p class="text-slate-300 text-sm mb-4">This portfolio, built for the D4WEE course.</p>
+          <span class="text-sky-400 text-sm font-semibold">View details <i class="fa-solid fa-arrow-right text-xs"></i></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 6. CONTACT -->
+<section id="contact" class="py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-xs font-semibold uppercase tracking-wider text-sky-400 mb-2">Get In Touch</h2>
+      <p class="text-3xl sm:text-4xl font-bold text-white">Contact Me</p>
+      <div class="w-12 h-1 bg-sky-500 mx-auto rounded-full mt-4"></div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-5 space-y-6 reveal">
+        <div class="glass-card p-6 rounded-2xl space-y-4">
+          <h3 class="text-lg font-bold text-white">Contact Information</h3>
+          <div class="flex items-center space-x-4">
+            <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center"><i class="fa-solid fa-envelope"></i></div>
+            <div><span class="text-xs text-slate-400 block">Email</span><a href="mailto:student@example.com" class="text-sm font-medium hover:text-sky-400">student@example.com</a></div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center"><i class="fa-solid fa-location-dot"></i></div>
+            <div><span class="text-xs text-slate-400 block">Institution</span><span class="text-sm font-medium">GCWUF, Faisalabad, Pakistan</span></div>
+          </div>
+        </div>
+        <div class="glass-card p-6 rounded-2xl">
+          <h3 class="text-sm font-bold text-white mb-3">Social Media</h3>
+          <div class="flex space-x-3">
+            <a href="https://github.com/your-username" target="_blank" aria-label="GitHub" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-sky-500 flex items-center justify-center hover:-translate-y-1 transition-all"><i class="fa-brands fa-github text-lg"></i></a>
+            <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-sky-500 flex items-center justify-center hover:-translate-y-1 transition-all"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
+            <a href="https://facebook.com/" target="_blank" aria-label="Facebook" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-sky-500 flex items-center justify-center hover:-translate-y-1 transition-all"><i class="fa-brands fa-facebook-f text-lg"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-7 reveal">
+        <form onsubmit="handleFormSubmit(event)" class="glass-card p-8 rounded-2xl space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <input type="text" required placeholder="Your name" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 text-sm">
+            <input type="email" required placeholder="Your email" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 text-sm">
+          </div>
+          <input type="text" required placeholder="Subject" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 text-sm">
+          <textarea rows="4" required placeholder="Your message..." class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 text-sm resize-none"></textarea>
+          <button type="submit" class="w-full py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-semibold text-sm active:scale-95">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-slate-800 bg-slate-950 py-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-xs text-slate-400">© <span id="year"></span> Mehak Rehman Siddique. D4WEE Project - GCWUF.</p>
+    <a href="#home" class="text-xs text-slate-400 hover:text-sky-400">Back to Top <i class="fa-solid fa-arrow-up text-[10px]"></i></a>
+  </div>
+</footer>
+
+<!-- PROJECT POPUP -->
+<div id="modal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4 bg-black/70" onclick="closeProject()">
+  <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" onclick="event.stopPropagation()">
+    <div class="relative h-56 bg-gradient-to-br from-sky-600 to-indigo-700 rounded-t-2xl overflow-hidden">
+      <img id="m-img" src="" alt="" class="w-full h-full object-cover" onerror="this.style.display='none'">
+      <button onclick="closeProject()" aria-label="Close" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-slate-900/80 hover:bg-sky-500 text-white flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="p-6 space-y-4">
+      <h3 id="m-title" class="text-2xl font-bold text-white"></h3>
+      <p id="m-desc" class="text-slate-300 text-sm leading-relaxed"></p>
+      <ul id="m-features" class="text-slate-300 text-sm space-y-1 list-disc pl-5"></ul>
+      <div id="m-tags" class="flex flex-wrap gap-2"></div>
+      <div class="flex gap-3 pt-2">
+        <a id="m-live" href="#" target="_blank" class="flex-1 py-2.5 text-center rounded-lg bg-sky-500 hover:bg-sky-400 text-white text-sm font-semibold">Live Demo</a>
+        <a id="m-code" href="#" target="_blank" class="flex-1 py-2.5 text-center rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold">View Code</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-5 right-5 glass-card text-white px-5 py-3 rounded-xl shadow-xl hidden border-l-4 border-l-sky-500 z-[80] text-sm"><span id="toast-message"></span></div>
+
+<script src="script.js"></script>
+</body>
+</html>
